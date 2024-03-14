@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module defines a script that connects to an API"""
 import csv
+import os
 import requests
 
 
@@ -28,9 +29,12 @@ def employee_todo_list(employee_id):
         csv_data.append(csv_row)
     # export to csv
     csv_file_path = f"{employee_id}.csv"
-    with open(csv_file_path, 'w', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerows(csv_data)
+    if os.path.exists(csv_file_path):
+        print(f"File '{csv_file_path}' already exists. Not overwriting.")
+    else:
+        with open(csv_file_path, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows(csv_data)
 
 
 if __name__ == "__main__":
