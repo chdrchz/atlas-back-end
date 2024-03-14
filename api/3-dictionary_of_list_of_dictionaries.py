@@ -4,7 +4,7 @@ import json
 import requests
 
 
-def all_employee_todo_lists(employee_id):
+def all_employee_todo_lists():
     """This function exports todo list data to json"""
 
     site_url = "https://jsonplaceholder.typicode.com"
@@ -28,8 +28,11 @@ def all_employee_todo_lists(employee_id):
     format = {str(employee_id): data}
 
     file = "todo_all_employees.json"
-    with open(file, 'w') as f:
-        json.dump(format, f)
+    try:
+        with open(file, 'w') as f:
+            json.dump(format, f)
+    except FileNotFoundError:
+        print("The todo_all_employees file doesn't exist")
 
 
 if __name__ == "__main__":
