@@ -22,3 +22,8 @@ def display_employee_progress(employee_id):
           .format(empl_name, tasks_done, tasks_total))
     for task in completed_tasks:
         print(f"\t {task}")
+    
+if __name__ == "__main__":
+    import sys
+
+    display_employee_progress(int(sys.argv[1]))
