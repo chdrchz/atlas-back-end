@@ -10,7 +10,8 @@ def employee_todo_list(employee_id):
     employee_url = f"{site_url}/users/{employee_id}"
     todo_url = f"{site_url}/todos"
 
-    employee_name = requests.get(employee_url).json()
+    employee_data = requests.get(employee_url).json()
+    employee_name = employee_data['name']
     todo_list = requests.get(todo_url, params={"userId": employee_id}).json()
 
     completed_todos = [t["title"] for t in todo_list if t["completed"]]
