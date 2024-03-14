@@ -24,8 +24,8 @@ def employee_todo_list(employee_id):
 
     csv_data = [["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]]
     for todo in todo_list:
-        csv_data_row = [employee_id, employee_name, completed_todos, todo["title"]]
-        csv_data.append(csv_data_row)
+        csv_row = [employee_id, employee_name, completed_todos, todo["title"]]
+        csv_data.append(csv_row)
     # export to csv
     csv_file_path = f"{employee_id}.csv"
     with open(csv_file_path, 'w', newline='') as csv_file:
