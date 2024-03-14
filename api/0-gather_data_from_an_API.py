@@ -13,8 +13,9 @@ def employee_todo_list(employee_id):
     employee_name = requests.get(employee_url).json()
     todo_list = requests.get(todo_url, params={"userId": employee_id}).json()
 
-    completed_todos = [todo["title"] for todo in todo_list if todo["completed"]]
+    completed_todos = [t["title"] for t in todo_list if t["completed"]]
     total_todos = len(todo_list)
     total_done = len(completed_todos)
 
-    print("Employee {} is done with tasks({}/{}):".format(employee_name, total_done, total_todos))
+    task_progress = f"{total_done}/{total_todos}"
+    print(f"Employee {employee_name} is done with tasks({task_progress}):")
