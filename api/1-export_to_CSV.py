@@ -46,7 +46,7 @@ def employee_todo_list(employee_id):
             writer = csv.writer(csv_file)
             writer.writerows(csv_data)
         num_tasks = len(csv_data) - 1
-        print(f"CSV file '{csv_file_path}' has been created with {num_tasks} tasks.")
+        print(f"CSV file '{csv_file_path}' created with {num_tasks} tasks.")
 
 
 if __name__ == "__main__":
