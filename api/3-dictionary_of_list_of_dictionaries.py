@@ -18,15 +18,15 @@ def all_employee_todo_lists():
         employee_id = employee['id']
         username = employee['username']
 
-    todo_list = requests.get(todos_url, params={"userId": employee_id}).json()
+        todo_list = requests.get(todos_url, params={"userId": employee_id}).json()
 
-    data = [{
-        "task": todo['title'],
-        "completed": todo['completed'],
-        "username": username
-    } for todo in todo_list]
+        data = [{
+            "task": todo['title'],
+            "completed": todo['completed'],
+            "username": username
+        } for todo in todo_list]
 
-    all_todo_lists[str(employee_id)] = data
+        all_todo_lists[str(employee_id)] = data
 
     file = "todo_all_employees.json"
     try:
