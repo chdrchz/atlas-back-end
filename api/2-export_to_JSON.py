@@ -8,7 +8,7 @@ import sys
 def employee_todo_list(employee_id):
     """This function exports todo list data to json"""
 
-    site_url = "https://jsonplaceholder.typicode.com/"
+    site_url = "https://jsonplaceholder.typicode.com"
     employee_url = f"{site_url}/users/{employee_id}"
     todo_url = f"{site_url}/todos"
 
