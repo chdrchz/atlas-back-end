@@ -6,6 +6,7 @@ import requests
 def employee_todo_list(employee_id):
     """This function displays todo list progress"""
 
+
     site_url = "https://jsonplaceholder.typicode.com/"
     employee_url = f"{site_url}/users/{employee_id}"
     todo_url = f"{site_url}/todos"
@@ -25,8 +26,6 @@ def employee_todo_list(employee_id):
         print(f"\t {todo}")
 
 if __name__ == "__main__":
-
-
     import sys
 
     employee_todo_list(int(sys.argv[1]))
