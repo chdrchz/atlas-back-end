@@ -31,5 +31,7 @@ def employee_todo_list(employee_id):
 
 
 if __name__ == "__main__":
-
-    employee_todo_list(int(sys.argv[1]))
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+    else:
+        employee_todo_list(int(sys.argv[1]))
