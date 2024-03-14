@@ -25,9 +25,10 @@ def employee_todo_list(employee_id):
         }
         tasks.append(task)
 
-    json_file_path = f"{employee_id}.json"
-    with open(json_file_path, 'w') as file:
+    file_path = f"{employee_id}.json"
+    with open(file_path, 'w') as file:
         json.dump(tasks, file, indent=4)
+        print(f"Data for employee_id {employee_id} witten to {file_path}.")
 
 
 if __name__ == "__main__":
