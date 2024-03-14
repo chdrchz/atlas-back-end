@@ -8,11 +8,12 @@ def all_employee_todo_lists():
     """This function exports todo list data to json"""
 
     site_url = "https://jsonplaceholder.typicode.com"
-    employees_url = f"{site_url}/users/"
+    employees_url = f"{site_url}/users"
     todos_url = f"{site_url}/todos"
 
     employees = requests.get(employees_url).json()
 
+    all_todo_lists = {}
     for employee in employees:
         employee_id = employee['id']
         username = employee['username']
@@ -25,12 +26,12 @@ def all_employee_todo_lists():
         "username": username
     } for todo in todo_list]
 
-    format = {str(employee_id): data}
+    all_todo_lists[str(employee_id)] = data
 
     file = "todo_all_employees.json"
     try:
         with open(file, 'w') as f:
-            json.dump(format, f)
+            json.dump(all_todo_lists, f)
     except FileNotFoundError:
         print("The todo_all_employees file doesn't exist")
 
