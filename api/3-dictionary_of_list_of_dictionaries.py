@@ -10,7 +10,7 @@ def all_employee_todo_lists(employee_id):
     site_url = "https://jsonplaceholder.typicode.com"
     employees_url = f"{site_url}/users/"
     todos_url = f"{site_url}/todos"
-    
+
     employees = requests.get(employees_url).json()
 
     for employee in employees:
