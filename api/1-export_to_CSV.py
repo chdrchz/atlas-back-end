@@ -25,8 +25,16 @@ def employee_todo_list(employee_id):
     # prepare CSV data
     csv_data = [["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]]
     for todo in todo_list:
-        task_completed_status="Completed" if todo["completed"] else "Not Completed"
-        csv_row = [employee_id, employee_name, task_completed_status, todo["title"]]
+        if todo["completed"]:
+            task_completed_status = "Completed"
+        else:
+            task_completed_status = "Not Completed"
+        csv_row = [
+            employee_id,
+            employee_name,
+            task_completed_status,
+            todo["title"]
+        ]
         csv_data.append(csv_row)
 
     # export to CSV
