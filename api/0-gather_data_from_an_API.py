@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module defines a script that connects to an API"""
 import requests
+import sys
 
 
 def employee_todo_list(employee_id):
@@ -26,6 +27,5 @@ def employee_todo_list(employee_id):
 
 
 if __name__ == "__main__":
-    import sys
 
     employee_todo_list(int(sys.argv[1]))
