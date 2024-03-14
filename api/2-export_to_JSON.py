@@ -16,8 +16,6 @@ def employee_todo_list(employee_id):
     employee_name = employee_data['name']
     todo_list = requests.get(todo_url, params={"userId": employee_id}).json()
 
-    completed_todos = [t["title"] for t in todo_list if t["completed"]]
-
     employee_json = {
         "employee_id": employee_id,
         "employee_name": employee_name,
@@ -25,8 +23,8 @@ def employee_todo_list(employee_id):
     }
 
     json_file_path = f"{employee_id}.json"
-    with open(json_file_path, 'w') as json_file:
-        json.dump(employee_json, json_file, indent=4)
+    with open(json_file_path, 'w') as file:
+        json.dump(employee_json, file, indent=4)
 
 
 if __name__ == "__main__":
