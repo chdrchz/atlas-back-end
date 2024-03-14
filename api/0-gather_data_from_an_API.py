@@ -25,6 +25,7 @@ def employee_todo_list(employee_id):
     for todo in completed_todos:
         print(f"\t {todo}")
 
+
 if __name__ == "__main__":
     import sys
 
