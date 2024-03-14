@@ -2,40 +2,35 @@
 """This module defines a script that connects to an API"""
 import json
 import requests
-import sys
 
 
-def employee_todo_list():
-    """Records all tasks from all employees"""
+def all_employee_todo_lists(employee_id):
+    """This function exports todo list data to json"""
 
     site_url = "https://jsonplaceholder.typicode.com"
-    all_employees_tasks = {}
-    employee_id = 1
+    employees_url = f"{site_url}/users/"
+    todos_url = f"{site_url}/todos"
+    
+    employees = requests.get(employees_url).json()
 
-    while True:
-        employee_url = f"{site_url}/users/{employee_id}"
-        response = requests.get(employee_url)
+    for employee in employees:
+        employee_id = employee['id']
+        username = employee['username']
 
-        if response.status_code != 200:
-            break
+    todo_list = requests.get(todos_url, params={"userId": employee_id}).json()
 
-        employee_data = response.json()
-        username = employee_data.get('username')
+    data = [{
+        "task": todo['title'],
+        "completed": todo['completed'],
+        "username": username
+    } for todo in todo_list]
 
-        todo_url = f"{site_url}/todos"
-        todo_list = requests.get(todo_url, params={"userId": employee_id}).json()
+    format = {str(employee_id): data}
 
-        all_employees_tasks[str(employee_id)] = [{"username": username,
-                                                   "task": todo['title'],
-                                                   "completed": todo['completed']} 
-                                                   for todo in todo_list]
-
-        employee_id += 1
-
-    with open("todo_all_employees.json", 'w') as f:
-        json.dump(all_employees_tasks, f, indent=4)
+    file = f"{employee_id}.json"
+    with open(file, 'w') as f:
+        json.dump(format, f)
 
 
 if __name__ == "__main__":
-
-    employee_todo_list(int(sys.argv[1]))
+    all_employee_todo_lists()
