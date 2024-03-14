@@ -9,7 +9,7 @@ import sys
 def employee_todo_list(employee_id):
     """This function exports to a csv"""
 
-    #API URLs
+    # API URLs
     site_url = "https://jsonplaceholder.typicode.com/"
     employee_url = f"{site_url}/users/{employee_id}"
     todo_url = f"{site_url}/todos"
@@ -25,9 +25,10 @@ def employee_todo_list(employee_id):
     # prepare CSV data
     csv_data = [["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]]
     for todo in todo_list:
-        task_completed_status = "Completed" if todo["completed"] else "Not Completed"
-        csv_data.append([employee_id, employee_name, task_completed_status, todo["title"]])
-    
+        task_completed_status="Completed" if todo["completed"] else "Not Completed"
+        csv_row = [employee_id, employee_name, task_completed_status, todo["title"]]
+        csv_data.append(csv_row)
+
     # export to CSV
     csv_file_path = f"{employee_id}.csv"
     if os.path.exists(csv_file_path):
