@@ -18,7 +18,7 @@ def all_employee_todo_lists():
         employee_id = employee['id']
         username = employee['username']
 
-        response = requests.get(todo_url, params={"userId": employee_id})
+        response = requests.get(todos_url, params={"userId": employee_id})
         todo_list = response.json()
 
         data = [{
