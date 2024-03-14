@@ -6,10 +6,7 @@ import requests
 
 
 def employee_todo_list(employee_id):
-    """
-    This function displays todo list progress
-    and exports to a csv
-    """
+    """This function exports to a csv"""
 
     site_url = "https://jsonplaceholder.typicode.com/"
     employee_url = f"{site_url}/users/{employee_id}"
