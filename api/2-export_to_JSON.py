@@ -27,7 +27,7 @@ def employee_todo_list(employee_id):
 
     file_path = f"{employee_id}.json"
     with open(file_path, 'w') as file:
-        json.dump(tasks, file, indent=4)
+        json.dumps(tasks, file, indent=4)
         print(f"Data for employee_id {employee_id} witten to {file_path}.")
 
 
